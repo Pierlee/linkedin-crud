@@ -1,11 +1,14 @@
 // Import the framework and instantiate it
-import fastify from 'fastify'
+import fastify, {FastifyInstance} from 'fastify'
+import { routes } from './routes'
 
 const app = fastify({
   logger: true
 })
 
 const start = async () => {
+
+  await app.register(routes)
   // Run the server!
   try {
     await app.listen({ port: 3000 })
