@@ -3,11 +3,13 @@ import prismaClient from "../prisma/prisma";
 interface EditCustomerProps {
   id: string
   name: string
-  email: string
+  linkedin: string
+  image: string
+  position: string
 }
 
 class EditCustomerService{
-  async execute({id, name, email}:EditCustomerProps){
+  async execute({id, name, linkedin, image, position}:EditCustomerProps){
 
     if(!id){
       throw new Error('hello error')
@@ -30,7 +32,9 @@ class EditCustomerService{
       },
       data: {
         name: name,
-        email: email,
+        linkedin: linkedin,
+        image: image,
+        position: position,
       }
     })
 
